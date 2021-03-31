@@ -82,21 +82,7 @@ orbs:
           - run:
               name: Checking for changes
               command: |
-                if [ "${CIRCLE_BRANCH}" = "master" ]; then
-                  echo "Determinator does not run on master"
-                  exit 0
-                fi
-
-                paths=".circleci circleci <<parameters.paths>>"
-                echo "Checking paths [$paths]"
-                for path in $paths; do
-                  if [[ $(git diff master^ --name-only $path) ]]; then
-                    echo "Found changes in $path"
-                    exit 0
-                  fi
-                done
-                echo "No changes in [$paths]"
-                circleci step halt
+                exit 0
 
 commands:
   install-go:
